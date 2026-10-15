@@ -133,10 +133,12 @@ def main():
     # Exc4
     n = 1000000
     d = 11
-    start = pc()
-    sphere_volume(n, d)
-    stop = pc()
-    print(f"Exc4: Sequential time of {d} and {n}: {stop-start}")
+    for i in range (3):
+        start = pc()
+        sphere_volume(n, d)
+        stop = pc()
+        print(f"Exc4: Sequential time of {d} and {n}: {stop-start}")
+	
     start = pc()
     sphere_volume_parallel (n,d,np=10)
     stop = pc()
