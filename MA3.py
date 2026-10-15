@@ -73,26 +73,6 @@ def hypersphere_exact(n, d):
 # print (f' (n,d) = (100000, 11), min approximation: {sphere_volume(100000, 11)}, den exakta : {hypersphere_exact(100000, 11)}')
 
 
-#Exc3: numba version
-@njit
-def sphere_volume_numba(n:int, d:int)->float:
-    # n is the number of points
-    # d is the number of dimensions of the sphere
-    #np is the number of processes
-    punkter_med_koordinater =[[random.random() for i in range (d)] for j in range(n)] #n-antal punkter med d-antal random koordinater
-    #listade_n_c = list(filter(None,map((lambda punkt:(sum(koord**2 for koord in punkt))**0.5 <=1), punkter_med_koordinater)))
-    listade_n_c =[]
-    for punkt in punkter_med_koordinater:
-        # avstånd = [sum(koord**2 for koord in punkt)**0.5]
-        summa = 0 
-        for koord in punkt:
-            summa += koord**2
-        avstånd = summa**0.5
-        if avstånd <= 1:
-            listade_n_c.append(avstånd)
-    n_c = len(listade_n_c) 
-    volym = (2**d)*(n_c/n)
-    return volym
 
 #Exc4: parallel code - parallelize actual computations by splitting data
 def for_varje_process (process_antal_punkter, d): #hjälpfunktion
