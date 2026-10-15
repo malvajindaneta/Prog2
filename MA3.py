@@ -12,7 +12,7 @@ import math as m
 import concurrent.futures as future
 from statistics import mean 
 from time import perf_counter as pc
-from numba import njit
+
 
 # Exc1
 def approximate_pi(n):
